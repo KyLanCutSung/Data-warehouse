@@ -446,7 +446,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind_bi_test</database>
+    <database>north_wind_bi</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -506,43 +506,43 @@
   </connection>
   <order>
     <hop>
-      <from>Récupération Variables</from>
-      <to>Décomposition Champs week_days</to>
+      <from>Recovery Variables</from>
+      <to>Breakdown Week_days Fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Décomposition Champs week_days</from>
+      <from>Breakdown Week_days Fields</from>
       <to>Normalisation Ligne</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Génération Lignes</from>
-      <to>Création dopérations de calcul</to>
+      <from>Generation Lines</from>
+      <to>Creating calculation operations</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Création dopérations de calcul</from>
-      <to>Clonage ligne</to>
+      <from>Creating calculation operations</from>
+      <to>Cloning line</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Clonage ligne</from>
-      <to>Création dopérations de calcul 2</to>
+      <from>Cloning line</from>
+      <to>Creating calculation operations 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Création dopérations de calcul 2</from>
-      <to>Altération structure flux</to>
+      <from>Creating calculation operations 2</from>
+      <to>Flow structure alteration</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Altération structure flux</from>
-      <to>Dimension à variation lente</to>
+      <from>Flow structure alteration</from>
+      <to>Changing dimension</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Altération structure flux</name>
+    <name>Flow structure alteration</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -555,21 +555,27 @@
     <fields>
       <field>
         <name>delta</name>
+        <rename/>
       </field>
       <field>
         <name>a_single_date</name>
+        <rename/>
       </field>
       <field>
         <name>day</name>
+        <rename/>
       </field>
       <field>
         <name>year</name>
+        <rename/>
       </field>
       <field>
         <name>month</name>
+        <rename/>
       </field>
       <field>
         <name>trimestre</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -588,7 +594,7 @@
     </GUI>
   </step>
   <step>
-    <name>Clonage ligne</name>
+    <name>Cloning line</name>
     <type>CloneRow</type>
     <description/>
     <distribute>Y</distribute>
@@ -620,7 +626,7 @@
     </GUI>
   </step>
   <step>
-    <name>Création dopérations de calcul</name>
+    <name>Creating calculation operations</name>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
@@ -661,7 +667,7 @@
     </GUI>
   </step>
   <step>
-    <name>Création dopérations de calcul 2</name>
+    <name>Creating calculation operations 2</name>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
@@ -762,7 +768,7 @@
     </GUI>
   </step>
   <step>
-    <name>Dimension à variation lente</name>
+    <name>Changing dimension</name>
     <type>DimensionLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -839,7 +845,7 @@
     </GUI>
   </step>
   <step>
-    <name>Décomposition Champs week_days</name>
+    <name>Breakdown Week_days Fields</name>
     <type>FieldSplitter</type>
     <description/>
     <distribute>Y</distribute>
@@ -974,7 +980,7 @@
     </GUI>
   </step>
   <step>
-    <name>Génération Lignes</name>
+    <name>Generation Lines</name>
     <type>RowGenerator</type>
     <description/>
     <distribute>Y</distribute>
@@ -1093,7 +1099,7 @@
     </GUI>
   </step>
   <step>
-    <name>Récupération Variables</name>
+    <name>Recovery Variables</name>
     <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>

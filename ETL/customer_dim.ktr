@@ -436,7 +436,7 @@
   <notepads>
   </notepads>
   <connection>
-    <name>con</name>
+    <name>north_wind</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
@@ -499,7 +499,7 @@
     </attributes>
   </connection>
   <connection>
-    <name>con1</name>
+    <name>north_wind_bi_test</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
@@ -734,7 +734,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>con</connection>
+    <connection>north_wind</connection>
     <sql>SELECT
   CustomerID
 , CompanyName
@@ -783,7 +783,7 @@ FROM customers
     </partitioning>
     <schema/>
     <table>customers_dim</table>
-    <connection>con1</connection>
+    <connection>north_wind_bi_test</connection>
     <commit>100</commit>
     <update>Y</update>
     <fields>

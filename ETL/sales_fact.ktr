@@ -503,7 +503,7 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind_bi_test</database>
+    <database>north_wind_bi</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -563,7 +563,7 @@
   </connection>
   <order>
     <hop>
-      <from>Extraction depuis table</from>
+      <from>Extraction from table</from>
       <to>customers_dim</to>
       <enabled>Y</enabled>
     </hop>
@@ -584,17 +584,17 @@
     </hop>
     <hop>
       <from>date_dim</from>
-      <to>Création dopérations de calcul</to>
+      <to>Creating calculation operations</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Création dopérations de calcul</from>
-      <to>Insertion dans table</to>
+      <from>Creating calculation operations</from>
+      <to>Insert into table</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Création dopérations de calcul</name>
+    <name>Creating calculation operations</name>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
@@ -629,13 +629,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>272</yloc>
+      <xloc>960</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Extraction depuis table</name>
+    <name>Extraction from table</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -653,7 +653,146 @@
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta/>
+    <row-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>customerID</name>
+        <length>5</length>
+        <precision>-1</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>customerID</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Timestamp</type>
+        <storagetype>normal</storagetype>
+        <name>orderDate</name>
+        <length>0</length>
+        <precision>-1</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>orderDate</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>shipCity</name>
+        <length>15</length>
+        <precision>-1</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>shipCity</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>productId</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>productId</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>unitPrice</name>
+        <length>10</length>
+        <precision>4</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>unitPrice</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>quantity</name>
+        <length>4</length>
+        <precision>0</precision>
+        <origin>Extraction depuis table</origin>
+        <comments>quantity</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -669,7 +808,7 @@
     </GUI>
   </step>
   <step>
-    <name>Insertion dans table</name>
+    <name>Insert into table</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
