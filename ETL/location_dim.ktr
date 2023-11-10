@@ -499,11 +499,11 @@
     </attributes>
   </connection>
   <connection>
-    <name>north_wind_bi</name>
+    <name>north_wind_bi_test</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind_bi</database>
+    <database>north_wind_bi_test</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -656,7 +656,7 @@
     </partitioning>
     <schema/>
     <table>location_dim</table>
-    <connection>north_wind_bi</connection>
+    <connection>north_wind_bi_test</connection>
     <commit>100</commit>
     <update>Y</update>
     <fields>

@@ -436,11 +436,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>northwind</name>
+    <name>north_wind_bi_test</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind</database>
+    <database>north_wind_bi_test</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -499,11 +499,11 @@
     </attributes>
   </connection>
   <connection>
-    <name>northwind_bi</name>
+    <name>northwind</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind_bi_test</database>
+    <database>north_wind</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -581,7 +581,7 @@
     </partitioning>
     <schema/>
     <table>products_dim</table>
-    <connection>northwind_bi</connection>
+    <connection>north_wind_bi_test</connection>
     <commit>100</commit>
     <update>Y</update>
     <fields>
@@ -622,6 +622,11 @@
       <field>
         <name>CategoryName</name>
         <lookup>CategoryName</lookup>
+        <update>Insert</update>
+      </field>
+      <field>
+        <name>SupplierID</name>
+        <lookup>supplier_id</lookup>
         <update>Insert</update>
       </field>
       <return>

@@ -442,11 +442,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>northwind_bi</name>
+    <name>north_wind_bi_test</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>north_wind_bi</database>
+    <database>north_wind_bi_test</database>
     <port>3306</port>
     <username>root</username>
     <password>Encrypted 2be98e1a00bd3b2a9a217a6358cc2ff88</password>
@@ -780,7 +780,7 @@
     </partitioning>
     <schema/>
     <table>date_dim</table>
-    <connection>northwind_bi</connection>
+    <connection>north_wind_bi_test</connection>
     <commit>100</commit>
     <update>Y</update>
     <fields>
@@ -840,7 +840,7 @@
     </remotesteps>
     <GUI>
       <xloc>1024</xloc>
-      <yloc>240</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
