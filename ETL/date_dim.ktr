@@ -523,12 +523,12 @@
     <hop>
       <from>Creating calculation operations</from>
       <to>Cloning line</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Cloning line</from>
       <to>Creating calculation operations 2</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Creating calculation operations 2</from>
@@ -542,8 +542,8 @@
     </hop>
   </order>
   <step>
-    <name>Flow structure alteration</name>
-    <type>SelectValues</type>
+    <name>Breakdown Week_days Fields</name>
+    <type>FieldSplitter</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -552,32 +552,115 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <splitfield>week_days</splitfield>
+    <delimiter>,</delimiter>
+    <enclosure/>
     <fields>
       <field>
-        <name>delta</name>
-        <rename/>
+        <name> sun</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
       </field>
       <field>
-        <name>a_single_date</name>
-        <rename/>
+        <name>mon</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
       </field>
       <field>
-        <name>day</name>
-        <rename/>
+        <name>tue</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
       </field>
       <field>
-        <name>year</name>
-        <rename/>
+        <name>wed</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
       </field>
       <field>
-        <name>month</name>
-        <rename/>
+        <name>thu</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
       </field>
       <field>
-        <name>trimestre</name>
-        <rename/>
+        <name>fri</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <field>
+        <name>sat</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -588,8 +671,85 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>240</yloc>
+      <xloc>352</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Changing dimension</name>
+    <type>DimensionLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <schema/>
+    <table>date_dim</table>
+    <connection>north_wind_bi_test</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>a_single_date</name>
+        <lookup>date</lookup>
+      </key>
+      <date>
+        <name/>
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>day</name>
+        <lookup>day</lookup>
+        <update>Insert</update>
+      </field>
+      <field>
+        <name>year</name>
+        <lookup>year</lookup>
+        <update>Insert</update>
+      </field>
+      <field>
+        <name>month</name>
+        <lookup>month</lookup>
+        <update>Insert</update>
+      </field>
+      <field>
+        <name>trimestre</name>
+        <lookup>trimestre</lookup>
+        <update>Insert</update>
+      </field>
+      <return>
+        <name>date_sk</name>
+        <rename/>
+        <creation_method>tablemax</creation_method>
+        <use_autoinc>N</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence/>
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>N</use_start_date_alternative>
+    <start_date_alternative>none</start_date_alternative>
+    <start_date_field_name/>
+    <useBatch>N</useBatch>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -739,7 +899,7 @@
       <currency_symbol/>
     </calculation>
     <calculation>
-      <field_name>trimestre</field_name>
+      <field_name>quarter</field_name>
       <calc_type>QUARTER_OF_DATE</calc_type>
       <field_a>a_single_date</field_a>
       <field_b/>
@@ -768,8 +928,8 @@
     </GUI>
   </step>
   <step>
-    <name>Changing dimension</name>
-    <type>DimensionLookup</type>
+    <name>Flow structure alteration</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -778,192 +938,32 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <schema/>
-    <table>date_dim</table>
-    <connection>north_wind_bi_test</connection>
-    <commit>100</commit>
-    <update>Y</update>
     <fields>
-      <key>
+      <field>
+        <name>delta</name>
+        <rename/>
+      </field>
+      <field>
         <name>a_single_date</name>
-        <lookup>date</lookup>
-      </key>
-      <date>
-        <name/>
-        <from>date_from</from>
-        <to>date_to</to>
-      </date>
+        <rename/>
+      </field>
       <field>
         <name>day</name>
-        <lookup>day</lookup>
-        <update>Insert</update>
+        <rename/>
       </field>
       <field>
         <name>year</name>
-        <lookup>year</lookup>
-        <update>Insert</update>
+        <rename/>
       </field>
       <field>
         <name>month</name>
-        <lookup>month</lookup>
-        <update>Insert</update>
-      </field>
-      <field>
-        <name>trimestre</name>
-        <lookup>trimestre</lookup>
-        <update>Insert</update>
-      </field>
-      <return>
-        <name>date_sk</name>
         <rename/>
-        <creation_method>tablemax</creation_method>
-        <use_autoinc>N</use_autoinc>
-        <version>version</version>
-      </return>
-    </fields>
-    <sequence/>
-    <min_year>1900</min_year>
-    <max_year>2199</max_year>
-    <cache_size>5000</cache_size>
-    <preload_cache>N</preload_cache>
-    <use_start_date_alternative>N</use_start_date_alternative>
-    <start_date_alternative>none</start_date_alternative>
-    <start_date_field_name/>
-    <useBatch>N</useBatch>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Breakdown Week_days Fields</name>
-    <type>FieldSplitter</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <splitfield>week_days</splitfield>
-    <delimiter>,</delimiter>
-    <enclosure/>
-    <fields>
-      <field>
-        <name> sun</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>both</trimtype>
       </field>
       <field>
-        <name>mon</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
+        <name>quarter</name>
+        <rename/>
       </field>
-      <field>
-        <name>tue</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-      </field>
-      <field>
-        <name>wed</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-      </field>
-      <field>
-        <name>thu</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-      </field>
-      <field>
-        <name>fri</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-      </field>
-      <field>
-        <name>sat</name>
-        <id/>
-        <idrem>N</idrem>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <currency/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -974,8 +974,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>160</yloc>
+      <xloc>880</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
